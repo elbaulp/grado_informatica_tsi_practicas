@@ -48,8 +48,35 @@ void Stopper::scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 
   if (closestRange < MIN_PROXIMITY_RANGE_M)
   {
-    ROS_INFO("Stop!");
-    keepMoving = false;
+    ROS_INFO("Girando");
+    girar();
+  }
+}
+
+/**
+ * @author Rafat Zahran
+ */
+void Stopper::girar()
+{
+  geometry_msgs::Twist msg; // The default constructor will set all commands to 0
+  msg.angular.x = 0.0;
+  msg.angular.y = 0.0;
+  msg.angular.z = 1.8;
+//------------------------------
+  /*OPCION1*/
+  int iSecret;
+  /* initialize random seed: */
+  srand (time(NULL));
+  /* generate secret number between 1 and 3: */
+iSecret  = rand() % 4 + 1;
+  ros::Rate rate(10);
+  while (ros::ok() && (iSecret > 1))
+  {
+    //msg.angular.z += 0.5;
+    commandPub.publish(msg);
+    iSecret--;
+    ros::spinOnce();
+    rate.sleep();
   }
 }
 

@@ -29,6 +29,7 @@ private:
   ros::Subscriber laserSub; // Subscriber to the simulated robot's laser scan topic
   bool keepMoving; // Indicates whether the robot should continue moving
 
+  void girar();
   void moveForward();
   void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan);
 };
