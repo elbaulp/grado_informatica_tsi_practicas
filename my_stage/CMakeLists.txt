@@ -162,5 +162,13 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
+include_directories(include ${catkin_INCLUDE_DIRS})
+
 add_executable( move_foward_node src/move_foward_node.cpp)
 target_link_libraries(move_foward_node ${catkin_LIBRARIES})
+
+add_executable( stopper src/stopper_node/Stopper.cpp src/stopper_node/run_stopper.cpp)
+target_link_libraries(stopper ${catkin_LIBRARIES})
+
+#add_executable( run_stopper src/stopper_node/run_stopper.cpp)
+#target_link_libraries(run_stopper ${catkin_LIBRARIES})

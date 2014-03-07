@@ -1,6 +1,7 @@
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
-int main(int argc, char **argv) {
+int main(int argc, char **argv)
+{
   const double FORWARD_SPEED_MPS = 0.2;
   // Initialize the node
   ros::init(argc, argv, "move_forward");
@@ -13,8 +14,10 @@ int main(int argc, char **argv) {
   msg.linear.x = FORWARD_SPEED_MPS;
   // Loop at 10Hz, publishing movement commands until we shut down
   ros::Rate rate(10);
-  ROS_INFO("Starting to move forward");
-  while (ros::ok()) {
+  ROS_INFO("Starting to move forward | empezando");
+
+  while (ros::ok())
+  {
     pub.publish(msg);
     rate.sleep();
   }
